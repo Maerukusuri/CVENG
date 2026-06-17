@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arina Turgeneva - ATS Resume</title>
+    <style>
+        :root {
+            color-scheme: light dark;
+            --bg-color: #0d0e15;
+            --text-main: #ffffff;
+            --text-muted: #aaa6c0;
+            --accent-pink: #f43f5e;
+            --accent-purple: #8b5cf6;
+            --accent-blue: #0ea5e9;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-color: #fcfbfe;
+                --text-main: #1a1a24;
+                --text-muted: #605d70;
+                --accent-pink: #d946ef;
+                --accent-purple: #a855f7;
+                --accent-blue: #0ea5e9;
+                --border-color: rgba(0, 0, 0, 0.08);
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding: 40px 20px;
+            background-image:
+                radial-gradient(circle at 10% 10%, color-mix(in srgb, var(--accent-pink) 10%, transparent) 0%, transparent 35%),
+                radial-gradient(circle at 90% 40%, color-mix(in srgb, var(--accent-purple) 10%, transparent) 0%, transparent 40%),
+                radial-gradient(circle at 50% 80%, color-mix(in srgb, var(--accent-blue) 10%, transparent) 0%, transparent 35%);
+            background-attachment: fixed;
+        }
+
+        .no-print-zone {
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: sans-serif;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px color-mix(in srgb, var(--accent-purple) 40%, transparent);
+        }
+
+        .cv-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: color-mix(in srgb, var(--bg-color) 60%, transparent);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            color: var(--text-main);
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .header .title {
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-purple);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .header .contacts {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .header .contacts a {
+            color: var(--text-main);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--accent-pink);
+        }
+
+        section {
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-pink);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-bottom: 12px;
+        }
+
+        .summary-text {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-align: justify;
+        }
+
+        .skills-content {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .skills-content strong {
+            color: var(--text-main);
+        }
+
+        .experience-item {
+            margin-bottom: 20px;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .company-name {
+            color: var(--text-main);
+        }
+
+        .job-date {
+            color: var(--accent-purple);
+        }
+
+        .job-sub {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        ul {
+            padding-left: 20px;
+            font-size: 13.5px;
+            color: var(--text-muted);
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .edu-item, .lang-item {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .edu-item strong {
+            color: var(--text-main);
+        }
+
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                padding: 0 !important;
+            }
+
+            .no-print-zone {
+                display: none !important;
+            }
+
+            .cv-container {
+                background: white !important;
+                border: none !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+            }
+
+            h1, .company-name, .skills-content strong, .edu-item strong {
+                color: black !important;
+            }
+
+            .header .title, .job-date {
+                color: #444444 !important;
+            }
+
+            h2 {
+                color: black !important;
+                border-bottom: 1px solid #000000 !important;
+            }
+
+            .header .contacts, .summary-text, .skills-content, .job-sub, ul, .edu-item, .lang-item {
+                color: #222222 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print-zone">
+        <button class="download-btn" onclick="window.print()">Download PDF / Print</button>
+    </div>
+
+    <div class="cv-container">
+
+        <header class="header">
+            <h1>Arina Turgeneva</h1>
+            <div class="title">QA Engineer · Manual & Automation Testing · Playwright · TypeScript</div>
+            <div class="contacts">
+                Tallinn, Harjumaa, Estonia | +372 56938555 |
+                <a href="mailto:arina.turgeneva98@gmail.com">arina.turgeneva98@gmail.com</a><br>
+               LinkedIn: <a href="https://www.linkedin.com/in/arina-turgeneva-07041a310" target="_blank">linkedin/arina-turgeneva-07041a310</a> |
+            </div>
+        </header>
+
+        <section>
+            <h2>Profile Summary</h2>
+            <p class="summary-text">
+                QA Engineer and Internship Supervisor with hands-on experience in manual testing, QA documentation, WordPress administration, UI validation, and cross-functional collaboration. Experienced in coordinating QA workflows, reviewing test artifacts, mentoring junior testers, supporting production web projects, and validating API and database-related functionality.
+            </p>
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skills-content">
+                    <p style="margin-bottom: 5px;"><strong>Hard Skills:</strong> TypeScript, Python, HTML / CSS, Playwright, Postman, Swagger, DBeaver, API Testing, SQL, Manual Testing, Test Documentation, WordPress CMS, YouTrack, Miro, Asana</p>
+                    <p><strong>Soft Skills:</strong> Mentorship, Coordination, Team Leadership, Analytical Thinking, People Management, Agile Collaboration, Time management, Quick learner</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Professional Experience</h2>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company-name">Tallinn Learning — QA Supervisor</span>
+                    <span class="job-date">2024 – Pres.</span>
+                </div>
+                <div class="job-sub">Internship Management</div>
+                <ul>
+                    <li>Coordinated QA internship workflows across multiple live projects.</li>
+                    <li>Reviewed 500+ defect reports, test cases, and testing artifacts via YouTrack.</li>
+                    <li>Mentored junior testers in bug reporting, documentation, and testing practices.</li>
+                    <li>Managed communication with stakeholders and supervised QA deliverables.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company-name">Liven Project / Mynted — Web Quality Spec.</span>
+                    <span class="job-date">2024 – Pres.</span>
+                </div>
+                <div class="job-sub">UI/UX Validation</div>
+                <ul>
+                    <li>Maintained and updated website content through WordPress CMS.</li>
+                    <li>Performed UI validation, usability reviews, and bug identification.</li>
+                    <li>Created and customized page layouts using HTML/CSS components.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company-name">Tallinna Tondiraba Huvikool — Art & Digital Design Teacher</span>
+                    <span class="job-date">2020 – Pres.</span>
+                </div>
+                <div class="job-sub">Leadership & Education</div>
+                <ul>
+                    <li>Taught ceramics, visual arts, and creative design to children.</li>
+                    <li>Led graphic design and digital creativity workshops.</li>
+                    <li>Developed educational programs and project-based activities.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Production Internships & Projects</h2>
+            <div class="experience-item">
+                <div class="exp-header"><strong>Gratheon Ecosystem</strong></div>
+                <p class="summary-text" style="font-size: 13.5px; margin-bottom: 8px;">First production QA Internship: microservices, configurations and release validation.</p>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header"><strong>MultiKey Platform</strong></div>
+                <p class="summary-text" style="font-size: 13.5px; margin-bottom: 8px;">End-to-end mobile testing, user account validation, localization checks and bug investigation.</p>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header"><strong>FinMind Platform</strong></div>
+                <p class="summary-text" style="font-size: 13.5px; margin-bottom: 8px;">E-learning platform testing, localization validation, user progress tracking and quiz workflows.</p>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header"><strong>Ydalir Ecosystem</strong></div>
+                <p class="summary-text" style="font-size: 13.5px; margin-bottom: 8px;">Large-scale website testing, responsive validation, cross-browser checks and bug reporting.</p>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header"><strong>EventPanel Platform</strong></div>
+                <p class="summary-text" style="font-size: 13.5px; margin-bottom: 8px;">Web, mobile and CLI testing, code generation validation, regression testing and QA mentorship.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <div class="edu-item">
+                <strong>Automation QA Course</strong> — Tallinn Learning | May – Sep 2025
+            </div>
+            <div class="edu-item">
+                <strong>QA Engineer Course</strong> — Tallinn Learning | Feb – Jun 2024
+            </div>
+            <div class="edu-item">
+                <strong>EKA Bachelor Degree</strong> — Estonian Academy of Arts | 2017 – 2020
+            </div>
+        </section>
+
+        <section>
+            <h2>Languages</h2>
+            <div class="lang-item">Russian (C2) · Estonian (C1) · English (B2)</div>
+        </section>
+
+    </div>
+
+</body>
+</html>
