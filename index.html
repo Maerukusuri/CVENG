@@ -11,42 +11,28 @@
     <style>
         :root {
             color-scheme: light dark;
-            --bg-color: #06070b;
+            --bg-color: #090a0f;
             --text-main: #ffffff;
             --text-muted: #f1f5f9;
             --accent-pink: #ff4d73;
             --accent-purple: #e152ff;
             --accent-blue: #38bdf8;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --impact-bg: rgba(225, 82, 255, 0.12);
-            --promo-bg: rgba(56, 189, 248, 0.15);
-
-            --glass-main: rgba(10, 12, 22, 0.3);
-            --glass-blur: blur(24px) saturate(140%);
-
-            --sphere-pink: rgba(255, 77, 115, 0.35);
-            --sphere-purple: rgba(225, 82, 255, 0.30);
-            --sphere-blue: rgba(56, 189, 248, 0.25);
+            --border-color: rgba(255, 255, 255, 0.18);
+            --impact-bg: rgba(225, 82, 255, 0.08);
+            --promo-bg: rgba(56, 189, 248, 0.1);
         }
 
         @media (prefers-color-scheme: light) {
             :root {
-                --bg-color: #eef2f7; 
+                --bg-color: #f8fafc;
                 --text-main: #0f172a;
-                --text-muted: #334155;
+                --text-muted: #1e293b;
                 --accent-pink: #db2777;
                 --accent-purple: #c026d3;
                 --accent-blue: #0284c7;
-                --border-color: rgba(15, 23, 42, 0.08);
+                --border-color: rgba(0, 0, 0, 0.12);
                 --impact-bg: rgba(192, 38, 211, 0.06);
                 --promo-bg: rgba(2, 132, 199, 0.08);
-
-                --glass-main: rgba(255, 255, 255, 0.45);
-                --glass-blur: blur(20px) saturate(160%);
-
-                --sphere-pink: rgba(255, 77, 115, 0.22);
-                --sphere-purple: rgba(225, 82, 255, 0.20);
-                --sphere-blue: rgba(56, 189, 248, 0.18);
             }
         }
 
@@ -60,16 +46,14 @@
             letter-spacing: -0.01em;
             margin: 0;
             padding: 15px 25px;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            transition: background-color 0.3s, color 0.3s;
-
             background-image:
-                radial-gradient(circle at 12% 15%, var(--sphere-pink) 0%, transparent 45%),
-                radial-gradient(circle at 88% 20%, var(--sphere-purple) 0%, transparent 50%),
-                radial-gradient(circle at 50% 85%, var(--sphere-blue) 0%, transparent 45%);
+                radial-gradient(circle at 10% 10%, color-mix(in srgb, var(--accent-pink) 7%, transparent) 0%, transparent 40%),
+                radial-gradient(circle at 90% 25%, color-mix(in srgb, var(--accent-purple) 7%, transparent) 0%, transparent 45%),
+                radial-gradient(circle at 50% 80%, color-mix(in srgb, var(--accent-blue) 6%, transparent) 0%, transparent 40%);
             background-attachment: fixed;
         }
 
@@ -85,7 +69,7 @@
         .download-btn {
             background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: none;
             padding: 6px 14px;
             font-size: 11px;
             font-weight: 700;
@@ -105,16 +89,16 @@
             width: 100%;
             max-width: 1600px;
             margin: 0 auto;
-            background: var(--glass-main);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            padding: 20px 24px;
+            background: color-mix(in srgb, var(--bg-color) 45%, transparent);
+            backdrop-filter: blur(30px) saturate(120%);
+            -webkit-backdrop-filter: blur(30px) saturate(120%);
+            padding: 16px 24px;
             border-radius: 16px;
             border: 1px solid var(--border-color);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0 20px 50px rgba(0, 0, 0, 0.25);
             display: flex;
             flex-direction: column;
-            height: 88vh;
+            min-height: 88vh;
             overflow: hidden;
         }
 
@@ -163,7 +147,7 @@
         .main-layout {
             display: grid;
             grid-template-columns: 1.15fr 1.5fr 1.35fr;
-            gap: 20px;
+            gap: 25px;
             flex-grow: 1;
             overflow: hidden;
         }
@@ -173,19 +157,14 @@
             flex-direction: column;
             justify-content: flex-start;
             overflow: hidden;
-            gap: 12px;
         }
 
         .column-pane:not(:last-child) {
             border-right: 1px solid var(--border-color);
-            padding-right: 16px;
+            padding-right: 20px;
         }
 
-        section {
-            margin: 0;
-            padding: 0;
-        }
-
+        section { margin-bottom: 12px; }
         h2 {
             font-family: 'Manrope', sans-serif;
             font-size: 12px;
@@ -200,7 +179,6 @@
         }
 
         .summary-text { font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.45; }
-
         .experience-item { margin-bottom: 10px; }
         .company-name { color: var(--text-main); display: block; font-size: 14px; font-weight: 700; }
         .job-date { color: var(--accent-purple); font-size: 11.5px; font-weight: 700; display: block; margin-bottom: 2px; }
@@ -237,23 +215,120 @@
         }
 
         @media print {
-            @page { size: A4 portrait; margin: 6mm 8mm 6mm 8mm; }
-            html, body { background: #ffffff !important; color: #000000 !important; font-family: Arial, sans-serif !important; padding: 0 !important; margin: 0 !important; height: auto !important; }
+            @page {
+                size: A4 portrait;
+                margin: 6mm 8mm 6mm 8mm;
+            }
+
+            html, body {
+                background: #ffffff !important;
+                color: #000000 !important;
+                font-family: Arial, sans-serif !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                height: auto !important;
+            }
+
             .no-print-zone, .header, .main-layout { display: none !important; }
-            .cv-container { background: #ffffff !important; border: none !important; padding: 0 !important; box-shadow: none !important; backdrop-filter: none !important; max-width: 100% !important; display: block !important; }
-            .pure-pdf-template { display: block !important; color: #000000 !important; }
-            .pdf-header { text-align: center; margin-bottom: 8px; }
-            .pdf-header h1 { font-size: 24px !important; font-weight: bold !important; margin: 0 0 2px 0 !important; color: #000000 !important; }
-            .pdf-header .pdf-job-title { font-size: 13px !important; font-weight: bold !important; text-transform: uppercase; margin-bottom: 4px; color: #000000 !important; }
-            .pdf-header .pdf-contacts { font-size: 11px !important; color: #000000 !important; font-weight: 500 !important; }
-            .pdf-section-title { font-size: 12px !important; font-weight: bold !important; text-transform: uppercase; border-bottom: 2px solid #000000 !important; margin-top: 10px !important; margin-bottom: 6px !important; padding-bottom: 1px !important; color: #000000 !important; }
-            .pdf-text { font-size: 13px !important; line-height: 1.3 !important; margin: 0 0 4px 0 !important; color: #000000 !important; }
-            .pdf-job-item { margin-bottom: 6px !important; }
-            .pdf-job-row { display: flex !important; justify-content: space-between !important; font-size: 12px !important; font-weight: bold !important; color: #000000 !important; }
-            .pdf-job-sub { font-size: 11px !important; font-style: italic !important; margin-bottom: 2px; color: #000000 !important; }
-            .pdf-bullets { margin: 0 0 2px 0 !important; padding-left: 16px !important; }
-            .pdf-bullets li { font-size: 12px !important; line-height: 1.3 !important; margin-bottom: 2px !important; color: #000000 !important; }
-            .pdf-impact-inline { font-size: 11px !important; background: transparent !important; padding: 1px 0 1px 6px !important; border-left: 2.5px solid #000000 !important; margin-top: 2px; color: #000000 !important; }
+
+            .cv-container {
+                background: #ffffff !important;
+                border: none !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                backdrop-filter: none !important;
+                max-width: 100% !important;
+                display: block !important;
+            }
+
+            .pure-pdf-template {
+                display: block !important;
+                color: #000000 !important;
+            }
+
+            .pdf-header {
+                text-align: center;
+                margin-bottom: 8px;
+            }
+
+            .pdf-header h1 {
+                font-size: 24px !important;
+                font-weight: bold !important;
+                margin: 0 0 2px 0 !important;
+                color: #000000 !important;
+            }
+
+            .pdf-header .pdf-job-title {
+                font-size: 13px !important;
+                font-weight: bold !important;
+                text-transform: uppercase;
+                margin-bottom: 4px;
+                color: #000000 !important;
+            }
+
+            .pdf-header .pdf-contacts {
+                font-size: 11px !important;
+                color: #000000 !important;
+                font-weight: 500 !important;
+            }
+
+            .pdf-section-title {
+                font-size: 12px !important;
+                font-weight: bold !important;
+                text-transform: uppercase;
+                border-bottom: 2px solid #000000 !important;
+                margin-top: 10px !important;
+                margin-bottom: 6px !important;
+                padding-bottom: 1px !important;
+                color: #000000 !important;
+            }
+
+            .pdf-text {
+                font-size: 13px !important;
+                line-height: 1.3 !important;
+                margin: 0 0 4px 0 !important;
+                color: #000000 !important;
+            }
+
+            .pdf-job-item {
+                margin-bottom: 6px !important;
+            }
+
+            .pdf-job-row {
+                display: flex !important;
+                justify-content: space-between !important;
+                font-size: 12px !important;
+                font-weight: bold !important;
+                color: #000000 !important;
+            }
+
+            .pdf-job-sub {
+                font-size: 11px !important;
+                font-style: italic !important;
+                margin-bottom: 2px;
+                color: #000000 !important;
+            }
+
+            .pdf-bullets {
+                margin: 0 0 2px 0 !important;
+                padding-left: 16px !important;
+            }
+
+            .pdf-bullets li {
+                font-size: 12px !important;
+                line-height: 1.3 !important;
+                margin-bottom: 2px !important;
+                color: #000000 !important;
+            }
+
+            .pdf-impact-inline {
+                font-size: 11px !important;
+                background: transparent !important;
+                padding: 1px 0 1px 6px !important;
+                border-left: 2.5px solid #000000 !important;
+                margin-top: 2px;
+                color: #000000 !important;
+            }
         }
     </style>
 </head>
@@ -266,17 +341,18 @@
     <div class="cv-container">
 
         <div class="pure-pdf-template">
+
             <div class="pdf-header">
                 <h1>Arina Turgeneva</h1>
                 <div class="pdf-job-title">QA Engineer | Manual & Test Automation</div>
                 <div class="pdf-contacts">
-                    Tallinn, Estonia; Open to Remote • +372 56938555 • arina.turgeneva98@gmail.com • LinkedIn
+                    Tallinn, Estonia; Open to Remote • +372 56938555 • arina.turgeneva98@gmail.com • <a href="https://www.linkedin.com/in/arina-turgeneva-07041a310" style="color:#000; text-decoration:none; font-weight:bold;">LinkedIn</a>
                 </div>
             </div>
 
             <div class="pdf-section-title">Professional Summary</div>
             <p class="pdf-text">
-                Detail-oriented QA Engineer with practical experience in manual testing on client-facing applications and digital real estate platforms. Skilled in web application, staging, and CMS testing, alongside a strong record of mentoring trainees and coordinating teams. Actively developing test automation expertise (Playwright, TypeScript, Python). Strong attention to detail, user-focused mindset and mentoring experience gained through supporting QA internship programs and trainee teams.
+                Detail-oriented QA Engineer with practical experience in manual testing on client-facing applications and digital real estate platforms. Skilled in web application, staging, and CMS testing, alongside a strong record of mentoring trainees and coordinating teams. Familiar with Playwright, TypeScript and Python through training projects. Strong attention to detail, user-focused mindset and mentoring experience gained through supporting QA internship programs and trainee teams.
             </p>
 
             <div class="pdf-section-title">Technical Skills</div>
@@ -287,6 +363,7 @@
             </p>
 
             <div class="pdf-section-title">Work Experience</div>
+
             <div class="pdf-job-item">
                 <div class="pdf-job-row">
                     <div>Mynted - WordPress Administrator / QA Support</div>
@@ -330,16 +407,16 @@
 
             <div class="pdf-job-item">
                 <div class="pdf-job-row">
-                    <div>Tallinna Tondiraba Huvikool - Art & Ceramics Teacher & Mentor</div>
+                    <div>Tallinna Tondiraba Huvikool - Ceramics, Art & Digital Design Teacher</div>
                     <div>2020 - Present</div>
                 </div>
                 <ul class="pdf-bullets">
-                    <li>Planned and delivered engaging, structured lessons in ceramics, visual arts, and digital design for children.</li>
-                    <li>Managed and coordinated classroom activities for groups of up to 15 students, keeping track of project progress and deadlines.</li>
-                    <li>Provided dedicated extracurricular mentorship, helping numerous students discover their passions, build portfolios, and enter chosen art programs.</li>
-                    <li>Built exceptional trust-based relationships with parents, resulting in high satisfaction and regular requests for group placement.</li>
+                    <li>Planned and delivered structured lessons in ceramics, visual arts, and digital design.</li>
+                    <li>Managed and coordinated student groups of up to 15 learners, tracking project deadlines.</li>
+                    <li>Authored educational curricula and maintained meticulous digital documentation and logs.</li>
+                    <li>Organized public exhibitions and workshops, successfully managing stakeholder communication (parents, students, administration).</li>
                 </ul>
-                <div class="pdf-impact-inline"><strong>Impact:</strong> Achieved strong retention based on reliable mentorship, streamlined documentation, and optimized timeline tracking for exhibitions.</div>
+                <div class="pdf-impact-inline"><strong>Impact:</strong> Handled cross-functional process coordination for student groups up to 15, enforced strict documentation logging, and mastered complex data simplification for mentorship.</div>
             </div>
 
             <div class="pdf-section-title">Test Automation Projects</div>
@@ -362,8 +439,9 @@
 
             <div class="pdf-section-title">Languages</div>
             <p class="pdf-text" style="margin-bottom: 0;">English (B2-C1) · Estonian (C1) · Russian (Native)</p>
+
         </div>
-        
+
         <header class="header">
             <div class="header-left">
                 <h1>Arina Turgeneva</h1>
@@ -372,46 +450,49 @@
             <div class="contacts">
                 Tallinn, Estonia, Remote-Friendly | +372 56938555<br>
                 <a href="mailto:arina.turgeneva98@gmail.com">arina.turgeneva98@gmail.com</a><br>
-                LinkedIn: <a href="https://www.linkedin.com/in/arina-turgeneva-qa/" target="_blank">arina.turgeneva-qa</a>
+                LinkedIn: <a href="https://www.linkedin.com/in/arina-turgeneva-qa" target="_blank">arina.turgeneva-qa</a>
             </div>
         </header>
 
         <div class="main-layout">
+
             <div class="column-pane">
-                <section>
-                    <h2>Professional Summary</h2>
-                    <p class="summary-text">
-                        Detail-oriented QA Engineer with practical experience in manual testing on client-facing applications and digital real estate platforms. Skilled in web application, staging, and CMS testing, alongside a strong record of mentoring trainees and coordinating teams. Actively developing test automation expertise (Playwright, TypeScript, Python). Strong attention to detail, user-focused mindset and mentoring experience gained through supporting QA internship programs and trainee teams.
-                    </p>
-                </section>
-                <section>
-                    <h2>Technical Skills</h2>
-                    <div class="skills-group">
-                        <strong>Core QA Competencies:</strong>
-                        <p>Manual testing, functional, regression, smoke, usability, UI, API & DB testing, test cases, checklists, bug reporting.</p>
-                    </div>
-                    <div class="skills-group">
-                        <strong>Tools & Automation:</strong>
-                        <p>Playwright, TypeScript, Python, POM, Git, Postman, Swagger, DBeaver, SQL, WordPress, GeoJSON, YouTrack, Agile.</p>
-                    </div>
-                    <div class="skills-group" style="margin-bottom: 0;">
-                        <strong>Soft Skills & Mentorship:</strong>
-                        <p>Cross-functional team collaboration, mentoring & leadership, presentation, complex data simplification, trainee coordination.</p>
-                    </div>
-                </section>
-                <section>
-                    <h2>Certifications</h2>
-                    <div class="edu-item"><strong>Automation QA Course</strong> - Tallinn Learning | 2025</div>
-                    <div class="edu-item" style="margin-bottom: 0;"><strong>QA Engineer Course</strong> - Tallinn Learning | 2024</div>
-                </section>
-                <section style="margin-bottom: 0;">
-                    <h2>Education</h2>
-                    <div class="edu-item" style="margin-bottom: 0;"><strong>Bachelor's Degree (Design)</strong> - Estonian Academy of Arts | 2017 - 2020</div>
-                </section>
+                <div>
+                    <section>
+                        <h2>Professional Summary</h2>
+                        <p class="summary-text">
+                            Detail-oriented QA Engineer with practical experience in manual testing on client-facing applications and digital real estate platforms. Skilled in web application, staging, and CMS testing, alongside a strong record of mentoring trainees and coordinating teams. Actively developing test automation expertise (Playwright, TypeScript, Python). Strong attention to detail, user-focused mindset and mentoring experience gained through supporting QA internship programs and trainee teams.
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Technical Skills</h2>
+                        <div class="skills-group">
+                            <strong>Core QA Competencies:</strong>
+                            <p>Manual testing, functional, regression, smoke, usability, UI, API & DB testing, test cases, checklists, bug reporting.</p>
+                        </div>
+                        <div class="skills-group">
+                            <strong>Tools & Automation:</strong>
+                            <p>Playwright, TypeScript, Python, POM, Git, Postman, Swagger, DBeaver, SQL, WordPress, GeoJSON, YouTrack, Agile, Java.</p>
+                        </div>
+                        <div class="skills-group" style="margin-bottom: 0;">
+                            <strong>Soft Skills & Mentorship:</strong>
+                            <p>Cross-functional team collaboration, mentoring & leadership, presentation, complex data simplification, trainee coordination.</p>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Certifications</h2>
+                        <div class="edu-item"><strong>Automation QA Course</strong> - Tallinn Learning | 2025</div>
+                        <div class="edu-item"><strong>QA Engineer Course</strong> - Tallinn Learning | 2024</div>
+                    </section>
+                    <section style="margin-bottom: 0;">
+                        <h2>Education</h2>
+                        <div class="edu-item" style="margin-bottom: 0;"><strong>Bachelor's Degree (Design)</strong> - Estonian Academy of Arts | 2017 - 2020</div>
+                    </section>
+                </div>
             </div>
-            
+
             <div class="column-pane">
-                <section style="flex-grow: 1; display: flex; flex-direction: column;">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
                     <h2>QA & Professional Experience</h2>
 
                     <div class="experience-item">
@@ -432,7 +513,7 @@
                         <div class="job-sub">Supervised projects: Multikey, FinMind, Ydalir, EventPanel.</div>
                         <ul>
                             <li>Coordinated testing workflows for teams of 10–12 interns in active sprints.</li>
-                            <li>Audited over 500 bug reports and test assets for quality compliance.</li>
+                            <li>Audited over 900 bug reports and test assets for quality compliance.</li>
                             <li>Maintained day-to-day triage communications between interns and development leads.</li>
                         </ul>
                         <div class="impact-box"><strong>Impact:</strong> Standardized bug reporting clarity, directly improving defect triage and developer response times.</div>
@@ -448,11 +529,12 @@
                         </ul>
                         <div class="impact-box"><strong>Impact:</strong> Mastered long-term process coordination, data simplification, and strict internal documentation logging.</div>
                     </div>
-                </section>
+                </div>
             </div>
-            
-            <div class="column-pane">
-                <section>
+
+            <div class="column-pane" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+
+                <section style="margin-bottom: 0;">
                     <h2>Test Automation</h2>
                     <div class="experience-item" style="margin-bottom: 0;">
                         <span class="company-name" style="font-size: 13px;">Playwright + TypeScript Projects</span>
@@ -465,7 +547,7 @@
                     </div>
                 </section>
 
-                <section>
+                <section style="margin-bottom: 0;">
                     <h2>QA Core Training</h2>
                     <div class="experience-item" style="margin-bottom: 0;">
                         <span class="company-name">Tallinn Learning - QA Engineer Intern</span>
@@ -479,27 +561,25 @@
                     </div>
                 </section>
 
-                <section style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
-                    <div>
-                        <h2>Hands-on Projects</h2>
-                        <div class="experience-item" style="margin-bottom: 6px;">
-                            <span class="company-name" style="font-size: 13px; color: var(--accent-purple);">EventPanel Application</span>
-                            <p class="summary-text" style="font-size: 12px; margin-top: 1px;">E2E functional verification. Identified defects in CLI authorization workflows, form validations, and payload structures.</p>
-                        </div>
-                        <div class="experience-item" style="margin-bottom: 6px;">
-                            <span class="company-name" style="font-size: 13px; color: var(--accent-purple);">MultiKey Platform</span>
-                            <p class="summary-text" style="font-size: 12px; margin-top: 1px;">Structural validation of profile generation modules, localization mappings, and global account setup procedures.</p>
-                        </div>
-                        <div class="experience-item" style="margin-bottom: 0;">
-                            <span class="company-name" style="font-size: 13px; color: var(--accent-purple);">FinMind Portal & Ydalir</span>
-                            <p class="summary-text" style="font-size: 12px; margin-top: 1px;">Tested client CRM structures, survey calculation scripts, and cross-device interface responsivity frameworks.</p>
-                        </div>
+                <section style="margin-bottom: 0;">
+                    <h2>Hands-on Projects</h2>
+                    <div class="experience-item" style="margin-bottom: 6px;">
+                        <span class="company-name" style="font-size: 13px; color: var(--accent-purple);">EventPanel Application</span>
+                        <p class="summary-text" style="font-size: 12px; margin-top: 1px;">E2E functional verification. Identified defects in CLI authorization workflows, form validations, and payload structures.</p>
                     </div>
+                    <div class="experience-item" style="margin-bottom: 6px;">
+                        <span class="company-name" style="font-size: 13px; color: var(--accent-purple);">MultiKey Platform</span>
+                        <p class="summary-text" style="font-size: 12px; margin-top: 1px;">Structural validation of profile generation modules, localization mappings, and global account setup procedures.</p>
+                    </div>
+                    <div class="experience-item" style="margin-bottom: 0;">
+                        <span class="company-name" style="font-size: 13px; color: var(--accent-purple);">FinMind Portal & Ydalir</span>
+                        <p class="summary-text" style="font-size: 12px; margin-top: 1px;">Tested client CRM structures, survey calculation scripts, and cross-device interface responsivity frameworks.</p>
+                    </div>
+                </section>
 
-                    <div style="padding-top: 12px;">
-                        <h2>Languages</h2>
-                        <div class="lang-item" style="margin-bottom: 0; padding-left: 4px;"><strong>English</strong> (B2-C1) · <strong>Estonian</strong> (C1) · <strong>Russian</strong> (Native)</div>
-                    </div>
+                <section style="margin-bottom: 0; padding-top: 4px;">
+                    <h2>Languages</h2>
+                    <div class="lang-item" style="margin-bottom: 0;"><strong>English</strong> (B2-C1) · <strong>Estonian</strong> (C1) · <strong>Russian</strong> (Native)</div>
                 </section>
             </div>
         </div>
